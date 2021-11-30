@@ -147,7 +147,7 @@ app.get("/game", (req, res) => {
 app.get("/home", (req, res) => {
   user = axios({
     method: "get",
-    url: "http://localhost:8000/user/",
+    url: `${process.env.USER_SERVER}user/`,
     headers: {
       token: req.cookies["cookieToken"]
     }
@@ -175,13 +175,13 @@ app.get("/ranking/:part", async (req, res) => {
 
   const user = await axios({
     method: "get",
-    url: "http://localhost:8000/user/",
+    url: `${process.env.USER_SERVER}/user/`,
     headers: {
       token: req.cookies["cookieToken"]
     }
   });
 
-  const URL = "http://localhost:8000/ranking/" + part;
+  const URL = `${process.env.USER_SERVER}/ranking/` + part;
 
   console.log("URL: ${URL}");
 
@@ -313,7 +313,7 @@ io.on("connection", function(socket) {
     console.log("-->", endTime);
     axios({
       method: "get",
-      url: "http://localhost:8000/game/api/update-record",
+      url: `${process.env.USER_SERVER}/game/api/update-record`,
       headers: {
         kakaoId: currentUser.kakaoId,
         currentURL: currentUser.playingURL,
