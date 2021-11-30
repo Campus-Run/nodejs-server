@@ -82,7 +82,7 @@ app.get("/", (req, res) => {
 app.get("/plaza", (req, res) => {
   user = axios({
     method: "get",
-    url: "http://localhost:8000/user/",
+    url: `${process.env.USER_SERVER}/user/`,
     headers: {
       token: req.cookies["cookieToken"]
     }
@@ -96,7 +96,7 @@ app.get("/plaza", (req, res) => {
       univName: user.univName,
       kakaoEmail: user.kakaoEmail,
       kakaoId: user.kakaoId,
-      nickName: user.nickName,
+      nickName: user.nickName
     });
   });
 });
@@ -104,7 +104,7 @@ app.get("/plaza", (req, res) => {
 app.get("/wait", (req, res) => {
   user = axios({
     method: "get",
-    url: "http://localhost:8000/user/",
+    url: `${process.env.USER_SERVER}/user/`,
     headers: {
       token: req.cookies["cookieToken"]
     }
@@ -117,7 +117,7 @@ app.get("/wait", (req, res) => {
       univName: user.univName,
       kakaoEmail: user.kakaoEmail,
       kakaoId: user.kakaoId,
-      nickName: user.nickName,
+      nickName: user.nickName
     });
   });
 });
@@ -125,7 +125,7 @@ app.get("/wait", (req, res) => {
 app.get("/game", (req, res) => {
   user = axios({
     method: "get",
-    url: "http://localhost:8000/user/",
+    url: `${process.env.USER_SERVER}/user/`,
     headers: {
       token: req.cookies["cookieToken"]
     }
@@ -139,7 +139,7 @@ app.get("/game", (req, res) => {
       univName: user.univName,
       kakaoEmail: user.kakaoEmail,
       kakaoId: user.kakaoId,
-      nickName: user.nickName,
+      nickName: user.nickName
     });
   });
 });
@@ -153,7 +153,7 @@ app.get("/home", (req, res) => {
     }
   }).then(function(response) {
     user = response.data;
-    console.log("유저유저유저유정",user);
+    console.log("유저유저유저유정", user);
     res.render("mainPage2", {
       userNameTest: "sdf",
       userName: user.userName,
@@ -161,7 +161,7 @@ app.get("/home", (req, res) => {
       kakaoEmail: user.kakaoEmail,
       idToken: req.cookies["cookieToken"],
       kakaoId: user.kakaoId,
-      nickName: user.nickName,
+      nickName: user.nickName
     });
   });
   // console.log(user.user);
@@ -191,7 +191,7 @@ app.get("/ranking/:part", async (req, res) => {
     kakaoEmail: user.kakaoEmail,
     idToken: req.cookies["cookieToken"],
     nickName: user.nickName,
-    part,
+    part
   });
 });
 
